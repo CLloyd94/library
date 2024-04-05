@@ -18,12 +18,28 @@ button {
     font-size: 16px;
 }
 
+form {
+    background-color: var(--grey);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    /* border: red 2px solid; */
+    max-width: 20%;
+    border-radius: 8px;
+}
+
 :root {
     --bg-color: white;
     /* --primary-color: #003B36; */
     /* Used 60% of the time */
     /* --secondary-color: D3D5D7; */
     /* Used 30% of the time */
+    --grey: #f7f6f6;
     --text-color: #050517;
     --accent-color: #F0A202;
     --btn-remove-book: #F49E9E;
@@ -66,15 +82,33 @@ button {
     margin-top: 15px;
 }
 
+.form-row {
+    margin-bottom: 15px;
+}
+
 .main-content {
     padding: 0px 60px;
 }
 
 .card-container {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(3, 1fr);
     gap: 20px;
+}
+
+.main-content {
+    border: red 2px solid;
+
+}
+
+.your-books-heading {
+    text-align: center;
+
+}
+.card-container {
+    border: red 2px solid;
+
 }
 
 .card {
