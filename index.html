@@ -21,20 +21,20 @@
             <form action='' method='get' class='add-book-form'>
                 <h2>Add a book</h2>
                 <div class='form-row'>
-                    <label for='title'>Title</label>
-                    <input id='title' name='title' type='text' required />
+                    <label for='title'></label>
+                    <input id='title' name='title' type='text' placeholder="Title" required />
                 </div>
                 <div class='form-row'>
-                    <label for='author'>Author</label>
-                    <input id='author' name='author' type='text' required />
+                    <label for='author'></label>
+                    <input id='author' name='author' type='text' placeholder="Author" required />
                 </div>
                 <div class='form-row'>
-                    <label for='pages'>Pages</label>
-                    <input id='pages' name='pages' type='text' required />
+                    <label for='pages'></label>
+                    <input id='pages' name='pages' type='tel' placeholder="Pages" required />
                 </div>
                 <div class='form-row'>
                     <label for='read'>I've read this book</label>
-                    <input type="checkbox" id="yes" name="yes" value="yes" required>
+                    <input type="checkbox" id="read" name="read" placeholder="no">
                 </div>
                 <button>Add book</button>
             </form>
@@ -44,46 +44,15 @@
             <div class="card-container">
                 <div class="card">
                     <div class="card-content">
-                        <h3>Book Title:</h3>
-                        <h3>by: (Author)</h3>
-                        <p>Pages: </p>
-                        <p>Read? </p>
-                        <button class="btn-remove-book">Remove from Library</button>
-                        <button class="btn-toggle-read">Mark as Read/Unread</button>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-content">
-                        <h3>Book Title:</h3>
-                        <h3>by: (Author)</h3>
-                        <p>Pages: </p>
-                        <p>Read? </p>
-                        <button class="btn-remove-book">Remove from Library</button>
-                        <button class="btn-toggle-read">Mark as Read/Unread</button>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-content">
-                        <h3>Book Title:</h3>
-                        <h3>by: (Author)</h3>
-                        <p>Pages: </p>
-                        <p>Read? </p>
-                        <button class="btn-remove-book">Remove from Library</button>
-                        <button class="btn-toggle-read">Mark as Read/Unread</button>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-content">
-                        <h3>Book Title:</h3>
-                        <h3>by: (Author)</h3>
-                        <p>Pages: </p>
-                        <p>Read? </p>
+                        <h3 class="card-title">Book Title:</h3>
+                        <h3 class="card-author">by: (Author)</h3>
+                        <p class="card-pages">Pages: </p>
+                        <p class="card-read">Read? </p>
                         <button class="btn-remove-book">Remove from Library</button>
                         <button class="btn-toggle-read">Mark as Read/Unread</button>
                     </div>
                 </div>
             </div>
-
         </div>
         
         <div class="footer">

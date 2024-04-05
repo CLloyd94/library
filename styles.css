@@ -33,6 +33,13 @@ form {
     border-radius: 8px;
 }
 
+input[type="text"], input[type="tel"] {
+    height: 40px;
+    border-radius: 5px;
+    border-color: var(--grey);
+    font-size: 16px;
+}
+
 :root {
     --bg-color: white;
     /* --primary-color: #003B36; */
