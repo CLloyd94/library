@@ -1,0 +1,109 @@
+* {
+    box-sizing: border-box;
+    /* border: red 2px solid; */
+}
+
+body {
+    background-color: var(--bg-color);
+}
+
+button {
+    background-color: var(--accent-color);
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 10px 20px;
+    color: var(--text-color);
+    border: none;
+    width: auto;
+    font-size: 16px;
+}
+
+:root {
+    --bg-color: white;
+    /* --primary-color: #003B36; */
+    /* Used 60% of the time */
+    /* --secondary-color: D3D5D7; */
+    /* Used 30% of the time */
+    --text-color: #050517;
+    --accent-color: #F0A202;
+    --btn-remove-book: #F49E9E;
+    --btn-toggle-read: #C4C6FB;
+    /* Used 10% of the time */
+    /* --sidebar-color: #012622; */
+}
+
+.container {
+    display:grid;
+    grid-template-rows: 4;
+}
+
+.header {
+    padding: 0px 20px;
+    
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0px 60px;
+    font-size: larger;
+}
+
+.hero-content h2,
+.hero-content p,
+.hero-content button {
+    margin-bottom: 15px;
+    /* Adjust this value as needed */
+}
+
+.btn-add-book {
+    background-color: var(--accent-color);
+    width: auto;
+    margin-top: 15px;
+}
+
+.main-content {
+    padding: 0px 60px;
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background-color: #f7f6f6ca;
+    box-shadow: 0px 5px 5px 0px grey;
+    border-radius: 5px;
+    /* max-width: 80%; */
+    display: flex;
+    padding: 0px 20px 10px;
+    /* grid-row-start: 2; Affects positioning within grid */
+}
+
+.card-content {
+    flex: 1;
+}
+
+.btn-remove-book {
+    background-color: var(--btn-remove-book);
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.btn-toggle-read {
+    background-color: var(--btn-toggle-read);
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.footer {
+    background-color: #D3D5D7;
+    padding: 20px;
+}
