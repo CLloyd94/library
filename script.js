@@ -7,22 +7,42 @@ const buttonRemoveBook = document.querySelector('.btn-remove-book');
 const buttonToggleRead = document.querySelector('.btn-toggle-read');
 
 
+const myLibrary = [];
+
+// the constructor
+function Book(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+    this.info = function () {
+        return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
+    };
+}
+
+
+function addBookToLibrary(title, author, pages, read) {
+    let book = new Book(title, author, pages, read);
+    myLibrary.push(book);
+    console.log(myLibrary);
+}
+
+
 formAddBook.addEventListener('submit', (e) => {
     e.preventDefault();
+    // What these are missing I think is when the 'add book' button is clicked, updating the 'value' attribute
     const titleValue = document.getElementById('title').value;
-    console.log(titleValue); // What these are missing I think is when the 'add book' button is clicked, updating the 'value' attribute
-
     const authorValue = document.getElementById('author').value;
-    console.log(authorValue);
-
     const pagesValue = document.getElementById('pages').value;
-    console.log(pagesValue);
-    
-    const readValue = document.getElementById('read').value;
-    console.log(readValue);
+    const readValue = document.getElementById('read').checked;
+    addBookToLibrary(titleValue, authorValue, pagesValue, readValue);
 });
 
-
+const cards = document.querySelectorAll('.card');
+cards.forEach((card) => {
+    // .card - title.innerTextContent = title;
+    
+});
 
 
 
@@ -74,26 +94,9 @@ formAddBook.addEventListener('submit', (e) => {
 //     });
 // });
 
-const myLibrary = [];
 
-// the constructor
-function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-    this.info = function () {
-        return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
-    };
-}
 
-// function addBookToLibrary(book) {
-//     // take user’s input
-//     // store the new book objects into an array. 
-//     let book = new Book(title, author, pages, read);
-//     myLibrary.push(book);
 
-// }
 
 // Write a function that loops through the array and displays each book on the page. 
 // You can display them in some sort of table, or each on their own “card”. 
