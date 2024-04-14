@@ -1,11 +1,9 @@
 const buttonAddBook = document.querySelector('.btn-add-book');
 const formAddBook = document.querySelector('.add-book-form');
 const cardContainer = document.querySelector('.card-container');
-const card = document.querySelector('.card');
 const cardContent = document.querySelector('.card-content');
 const buttonRemoveBook = document.querySelector('.btn-remove-book');
 const buttonToggleRead = document.querySelector('.btn-toggle-read');
-
 
 const myLibrary = [];
 
@@ -20,14 +18,15 @@ function Book(title, author, pages, read) {
     };
 }
 
-
+// Function for capturing user's input and creating a book, then calling the updateCardContainer function
 function addBookToLibrary(title, author, pages, read) {
     let book = new Book(title, author, pages, read);
     myLibrary.push(book);
     console.log(myLibrary);
+    updateCardContainer(book);
 }
 
-
+// When the form is submitted, call the addBookToLibrary function with the user's input
 formAddBook.addEventListener('submit', (e) => {
     e.preventDefault();
     // What these are missing I think is when the 'add book' button is clicked, updating the 'value' attribute
@@ -38,13 +37,22 @@ formAddBook.addEventListener('submit', (e) => {
     addBookToLibrary(titleValue, authorValue, pagesValue, readValue);
 });
 
-const cards = document.querySelectorAll('.card');
-cards.forEach((card) => {
-    // .card - title.innerTextContent = title;
-    
-});
-
-
+// Add card to card container
+function updateCardContainer(book) {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+        <div class="card-content">
+            <h3 class="card-title">${book.title}</h3>
+            <h4 class="card-author">${book.author}</h3>
+            <p class="card-pages">${book.pages} pages</p>
+            <p class="card-read">${book.read ? 'Already read' : 'Not yet read'}</p>
+            <button class="btn-remove-book">Remove from Library</button>
+            <button class="btn-toggle-read">${book.read ? 'Mark as unread' : 'Mark as read'}</button>
+        </div>
+    `;
+    cardContainer.appendChild(card);
+}
 
 
 // digits.forEach((digit) => {
