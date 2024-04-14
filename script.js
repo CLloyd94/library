@@ -3,9 +3,6 @@ const buttonAddBook = document.querySelector('.btn-add-book');
 const formAddBook = document.querySelector('.add-book-form');
 const buttonCloseDialog = document.querySelector('.btn-cancel');
 const cardContainer = document.querySelector('.card-container');
-const cardContent = document.querySelector('.card-content');
-const buttonRemoveBook = document.querySelector('.btn-remove-book');
-const buttonToggleRead = document.querySelector('.btn-toggle-read');
 
 const myLibrary = [];
 
@@ -14,11 +11,12 @@ buttonAddBook.addEventListener('click', () => {
     dialog.showModal();
 });
 
+// When the user presses the 'cancel' button on the dialog, the dialog closes
 buttonCloseDialog.addEventListener('click', () => {
     dialog.close();
 })
 
-// the constructor
+// The book constructor
 function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
@@ -29,18 +27,16 @@ function Book(title, author, pages, read) {
     };
 }
 
-// Function for capturing user's input and creating a book, then calling the updateCardContainer function
+// Function for capturing user's input and creating a book, then calling the updateCardContainer function to update DOM
 function addBookToLibrary(title, author, pages, read) {
     let book = new Book(title, author, pages, read);
     myLibrary.push(book);
-    console.log(myLibrary);
     updateCardContainer(book);
 }
 
-// When the form is submitted, call the addBookToLibrary function with the user's input
+// When the form is submitted, capture the user's input and use it to add a book to the library, then close the dialog
 formAddBook.addEventListener('submit', (e) => {
     e.preventDefault();
-    // What these are missing I think is when the 'add book' button is clicked, updating the 'value' attribute
     const titleValue = document.getElementById('title').value;
     const authorValue = document.getElementById('author').value;
     const pagesValue = document.getElementById('pages').value;
@@ -52,8 +48,11 @@ formAddBook.addEventListener('submit', (e) => {
 // Add card to card container
 function updateCardContainer(book) {
     const card = document.createElement('div');
+    // Find the index of the book in the array and store in the card as an ID so we can remove the card later
+    const bookIndex = myLibrary.indexOf(book);
     card.className = 'card';
-    // Add the book's index in the array as a hidden number in the card. Will probably need to iterate through with a for loop
+    card.id = 'card-' + bookIndex; // Give the card an ID that includes the index
+    // Add the card with the data from the book object
     card.innerHTML = `
         <div class="card-content">
             <h3 class="card-title">${book.title}</h3>
@@ -65,23 +64,38 @@ function updateCardContainer(book) {
         </div>
     `;
     cardContainer.appendChild(card);
+    // Add event listener to the remove button of the new card
+    const removeButton = card.querySelector('.btn-remove-book');
+    removeButton.addEventListener('click', () => {
+        removeBookFromLibrary(bookIndex);
+    });
+    // Add event listener to the 'toggle read button' of the new card
+    const toggleReadButton = card.querySelector('.btn-toggle-read');
+    toggleReadButton.addEventListener('click', () => {
+        toggleReadStatus(book);
+    });
 }
 
-buttonRemoveBook.addEventListener('click', () => {
-    // Retrieve the card's number
-    // This number should be the same as the index of the book in the array 
-    // Then, go through the array and remove the book at that index
-});
+// Logic for removing book from library and DOM using the card index, which corresponds to the array index of the book
+function removeBookFromLibrary(bookIndex) {
+    if (bookIndex > -1) {
+        myLibrary.splice(bookIndex, 1); // Remove book from array
+        // Also remove the card from the DOM
+        const cardToRemove = document.getElementById('card-' + bookIndex);
+        cardToRemove.remove();
+    }
+}
 
-function toggleReadStatus() {
-    // This is where we would access the read status on the Book's prototype
-    // if the text Content of the toggleRead is markUnread
-    // change the read status property to false
-    // Else change it to true
+// Logic for toggling read status
+function toggleReadStatus(book) {
+    // Whatever the value of read is e.g. true, change it to the opposite boolean e.g. false
+    book.read = !book.read;
+    const bookIndex = myLibrary.indexOf(book);
+    const card = document.getElementById('card-' + bookIndex);
+    const readParagraph = card.querySelector('.card-read');
+    const toggleReadButton = card.querySelector('.btn-toggle-read');
+
+    // Change the text and button accordingly, depending on if the book as been read or not
+    readParagraph.textContent = book.read ? 'Already read' : 'Not yet read';
+    toggleReadButton.textContent = book.read ? 'Mark as unread' : 'Mark as read';
 };
-
-buttonToggleRead.addEventListener('click', () => {
-    // Call the toggleReadStatus function
-    
-
-});
