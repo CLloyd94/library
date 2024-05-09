@@ -16,15 +16,17 @@ buttonCloseDialog.addEventListener('click', () => {
     dialog.close();
 })
 
-// The book constructor
-function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-    this.info = function () {
+// Create book class
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
+    info() {
         return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
-    };
+    }
 }
 
 // Function for capturing user's input and creating a book, then calling the updateCardContainer function to update DOM
